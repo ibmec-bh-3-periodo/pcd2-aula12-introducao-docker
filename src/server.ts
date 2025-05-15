@@ -56,6 +56,36 @@ app.post("/contato", (req: Request, res: Response) => {
   });
 });
 
+// Rota GET para buscar mensagens
+app.get("/mensagens", (req: Request, res: Response) => {
+    const filePath = path.join(__dirname, "data", "messages.json");
+    
+    // Verifica se o arquivo existe
+    fs.access(filePath, fs.constants.F_OK, (err) => {
+      if (err) {
+        // Se o arquivo não existir, retorna array vazio
+        return res.json([]);
+      }
+      
+      // Lê o arquivo e retorna as mensagens
+      fs.readFile(filePath, "utf8", (err, data) => {
+        if (err) {
+          console.error("Erro ao ler o arquivo:", err);
+          return res.status(500).json({ erro: "Erro ao ler mensagens." });
+        }
+        
+        try {
+          const mensagens = JSON.parse(data);
+          // Retorna as mensagens em ordem cronológica inversa (mais recentes primeiro)
+          return res.json(mensagens.reverse());
+        } catch (parseError) {
+          console.error("Erro ao fazer parse do JSON:", parseError);
+          return res.status(500).json({ erro: "Erro ao processar mensagens." });
+        }
+      });
+    });
+  });
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

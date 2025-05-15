@@ -29,8 +29,22 @@
 
         <button type="submit">Enviar</button>
       </form>
+      
+    <!-- Botão para verificar mensagens -->
+    <div class="verificar-container">
+      <button id="btn-verificar-mensagens">Verificar mensagens enviadas</button>
+    </div>
+    
+    <!-- Container para exibir as mensagens -->
+    <div id="mensagens-container" class="mensagens-container hidden">
+      <h2>Mensagens Enviadas</h2>
+      <div id="lista-mensagens"></div>
+    </div>
+  </div>
+      
     </div>
 
     <script src="services/scripts.js"></script>
+    <script src="services/api_requests.js"></script>
   </body>
 </html>

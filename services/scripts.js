@@ -40,3 +40,65 @@ document
       console.error(erro);
     }
   });
+
+// Funcionalidade para verificar mensagens
+document
+  .getElementById("btn-verificar-mensagens")
+  .addEventListener("click", async function () {
+    try {
+      // Altera o texto do botão para indicar carregamento
+      const btnVerificar = this;
+      btnVerificar.disabled = true;
+
+      // Faz requisição GET para buscar mensagens
+      const resposta = await fetch("http://localhost:3000/mensagens");
+
+      if (!resposta.ok) throw new Error("Erro ao buscar mensagens.");
+
+      const mensagens = await resposta.json();
+
+      // Exibe as mensagens na página
+      const listaMensagens = document.getElementById("lista-mensagens");
+      const containerMensagens = document.getElementById("mensagens-container");
+
+      // Remove a classe hidden para mostrar o container
+      containerMensagens.classList.remove("hidden");
+
+      // Limpa a lista atual
+      listaMensagens.innerHTML = "";
+
+      if (mensagens.length === 0) {
+        listaMensagens.innerHTML =
+          "<p class='sem-mensagens'>Nenhuma mensagem encontrada.</p>";
+      } else {
+        // Cria elementos para cada mensagem
+        mensagens.forEach((mensagem) => {
+          const mensagemEl = document.createElement("div");
+          mensagemEl.className = "mensagem-item";
+
+          // Formata a data
+          const data = new Date(mensagem.data);
+          const dataFormatada = data.toLocaleString("pt-BR");
+
+          mensagemEl.innerHTML = `
+          <h3>${mensagem.nome}</h3>
+          <p><strong>Email:</strong> ${mensagem.email}</p>
+          <p><strong>Mensagem:</strong> ${mensagem.mensagem}</p>
+          <p class="data">${dataFormatada}</p>
+        `;
+
+          listaMensagens.appendChild(mensagemEl);
+        });
+      }
+
+      // Rola até a seção de mensagens
+      containerMensagens.scrollIntoView({ behavior: "smooth" });
+    } catch (erro) {
+      alert("Falha ao buscar mensagens. Tente novamente.");
+      console.error(erro);
+    } finally {
+      // Restaura o texto original do botão
+      btnVerificar.textContent = textoOriginal;
+      btnVerificar.disabled = false;
+    }
+  });
