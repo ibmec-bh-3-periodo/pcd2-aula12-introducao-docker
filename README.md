@@ -4,7 +4,7 @@ Este repositório apresenta um projeto **Full Stack** simples e didático, cuida
 
 ### 📚 Índice
 
-  * [🔧 Tecnologias Utilizadas](#tecnologias-utilizadas)
+  * [🔧 Tecnologias Utilizadas](###tecnologias-utilizadas)
   * [🗂️ Estrutura do Projeto](#estrutura-do-projeto)
   * [🌐 Front-end](#front-end)
       * [📄 `index.html`](#indexhtml)
