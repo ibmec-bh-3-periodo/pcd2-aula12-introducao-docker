@@ -1,8 +1,8 @@
-## [PCD2] Mini-projeto Full Stack - Formulário de Contato
+# [PCD2] Mini-projeto Full Stack - Formulário de Contato
 
 Este repositório apresenta um projeto **Full Stack** simples e didático, cuidadosamente elaborado para demonstrar, de forma prática e passo a passo, o uso de **JavaScript assíncrono** para uma experiência de usuário fluida, a manipulação dinâmica do **DOM**, a poderosa integração entre o front-end e o **API Express** (construído com **Node.js** e a tipagem robusta do **TypeScript**), e a persistência de dados de forma simplificada utilizando um arquivo **.json**. Este projeto é ideal para iniciantes e estudantes que desejam compreender o fluxo completo de uma aplicação web moderna.
 
-### 📚 Índice
+## 📚 Índice
 
   * [🔧 Tecnologias Utilizadas](###tecnologias-utilizadas)
   * [🗂️ Estrutura do Projeto](#estrutura-do-projeto)
