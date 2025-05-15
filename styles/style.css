@@ -5,6 +5,7 @@
   --cor-botao-hover: #2980b9;
   --cor-input: #fff;
   --borda: #ccc;
+  --cor-texto-input: black;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--cor-fundo);
   color: var(--cor-texto);
-  /* transition: background-color 0.3s, color 0.3s; */
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -21,8 +22,9 @@ body {
   background-color: #ffffff;
   padding: 2rem;
   border-radius: 10px;
+  position: relative;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  /* transition: background-color 0.3s; */
+  transition: background-color 0.3s;
 }
 
 header {
@@ -41,7 +43,7 @@ header a {
   text-decoration: none;
   color: var(--cor-principal);
   font-weight: bold;
-  /* transition: color 0.2s; */
+  transition: color 0.2s;
 }
 
 header a:hover {
@@ -63,8 +65,9 @@ header a:hover {
   border-radius: 6px;
   background-color: var(--cor-input);
   font-size: 1rem;
-  /* transition: border-color 0.2s; */
+  transition: border-color 0.2s;
   resize: none;
+  color: var(--cor-texto-input);
 }
 
 .formulario input:focus,
@@ -81,7 +84,7 @@ header a:hover {
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
-  /* transition: background-color 0.2s; */
+  transition: background-color 0.2s;
 }
 
 .formulario button:hover {
@@ -97,6 +100,7 @@ header a:hover {
   --cor-botao-hover: #8e44ad;
   --cor-input: #2c2c3e;
   --borda: #555;
+  --cor-texto-input: #fff;
 }
 
 .modo-escuro .container {
@@ -108,7 +112,8 @@ header a:hover {
   margin-top: 2rem;
   /* text-align: center; */
   position: absolute;
-  right: 0;
+  bottom: 32px;
+  left: 272px;
 }
 
 #btn-verificar-mensagens {
