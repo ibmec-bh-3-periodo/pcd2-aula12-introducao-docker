@@ -1,21 +1,29 @@
-# Usa a imagem oficial do Node.js
-FROM node:18
+# Etapa 1: Build com Node
+FROM node:18 AS build
 
-# Define diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copia arquivos de configuração e instalação
 COPY package*.json ./
 RUN npm install
 
-# Copia o restante do projeto
 COPY . .
-
-# Compila TypeScript
 RUN npm run build
 
-# Expõe a porta do servidor no container
+# Etapa 2: Imagem final para produção
+FROM node:18
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install --omit=dev
+
+# Copia apenas o necessário
+COPY --from=build /app/dist ./dist
+COPY index.html ./index.html
+COPY styles ./styles
+COPY services ./services
+COPY src/data ./dist/data 
+
 EXPOSE 3000
 
-# Rodar o servidor em modo de desenvolvimento
-CMD ["npx", "tsx", "watch", "src/server.ts"]
+CMD ["node", "dist/server.js"]
